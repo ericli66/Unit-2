@@ -1,23 +1,35 @@
 //Eric Li
 //2/23/2026
 
-int mosterX;
+int monsterX;
+int monsterAngle;
+float monsterSize;
 
 void setup() {
-  size(600, 600);
-  compassX = 0;
+  size(600, 600, P2D);
+  monsterX = 0;
+  monsterAngle = 0;
 }
 
 void draw() {
   background(255);
-  monster(200, 300);
-  compassX = compassX + 1;
-  if 
+  monster(monsterX, 300, monsterAngle, monsterSize);
+  monsterX = monsterX + 5;
+  monsterAngle = monsterAngle + 10;
+  monsterSize = monsterSize + 0.005;
+  if (monsterX > 800) {
+    monsterX = -200;
+    monsterAngle = 0;
+    monsterSize = 0;
+  }
 }
 
-void monster(int x, int y) {
+//           parameters
+void monster(int x, int y, int angle, float s) {
   pushMatrix();
   translate(x, y);
+  rotate(radians(angle));
+  scale(s);
 
   //ears
   strokeWeight(5);
